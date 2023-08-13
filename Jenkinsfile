@@ -1,7 +1,7 @@
 pipeline {
     // section : agent
     // docker agent를 사용합나다. 이때 사용하는 도커 이미지는 python:3.11.4-alpine입니다.
-    agent { docker {iamge 'python:3.11.4-alpine'} }
+    agent { docker {image 'python:3.11.4-alpine'} }
 
     // section : stages
     // 하나의 stage를 가진 간단한 파이프라인입니다.
