@@ -21,6 +21,17 @@ pipeline {
                 '''
            }
         }
+
+        // BuildImage stage에서는 도커 이미지를 생성합니다.
+        stage('BuildImage') {
+            agent { node {label 'docker_build'} }
+            steps {
+                script {
+                    def trainImage = docker.build("trainimage:0", "-f ./Dockerfile.train .")
+                    def inferImage = docker.build("inferimage:0", "-f ./Dockerfile.infer .")
+                }
+            }
+        }
     }
 
     post {
